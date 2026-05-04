@@ -1,0 +1,336 @@
+/* ══════════════════════════════════════════════════════════
+   arcade-shell.css
+   Masque commun — cadre borne d'arcade plein écran
+   Ne touche PAS au contenu des pages (géré par page.css)
+══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  /* ── Palette borne (sobre, métal rétro) ── */
+  --c-body: #161616;
+  --c-panel: #111111;
+  --c-bezel: #0d0d0d;
+  --c-metal-hi: #3c3c3c;
+  /* reflet clair bord biseauté */
+  --c-metal-lo: #050505;
+  /* ombre bord biseauté        */
+  --c-stripe-1: #cc2233;
+  /* rouge — liseré rétro       */
+  --c-stripe-2: #ffffff;
+  /* jaune                      */
+  --c-stripe-3: #1155cc;
+  /* bleu                       */
+  --c-cyan: #00bbdd;
+  --c-screen: #c8c8cc;
+  /* fond CRT gris              */
+  --c-font: #eeeecc;
+
+  /* ── Dimensions du masque ── */
+  --top-h: 82px;
+  --side-w: 44px;
+  --bottom-h: 148px;
+  /* assez haut pour les gros joysticks */
+  --joy-r: 60px;
+  /* rayon de la bille joystick         */
+  --joy-up: -50px;
+  /* combien la bille dépasse vers le haut */
+}
+
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #080808;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  color: var(--c-font);
+}
+
+/* ══════════════════════════════════════════════════════════
+   TOPPER
+══════════════════════════════════════════════════════════ */
+.arcade-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--top-h);
+  background: var(--c-body);
+  z-index: 200;
+  /* biseau métal bas */
+  border-bottom: 4px solid var(--c-metal-lo);
+  box-shadow:
+    inset 0 -2px 0 var(--c-metal-hi),
+    inset 0 2px 0 var(--c-metal-hi),
+    0 6px 28px rgba(0, 0, 0, .95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  overflow: hidden;
+}
+
+
+.arcade-title {
+  font-size: 1.1rem;
+  color: var(--c-font);
+  letter-spacing: .12em;
+  text-shadow:
+    2px 2px 0 #000,
+    -1px -1px 0 #444;
+  line-height: 1;
+}
+
+
+
+/* ══════════════════════════════════════════════════════════
+   ÉCRAN (zone de contenu)
+══════════════════════════════════════════════════════════ */
+.arcade-screen {
+  position: fixed;
+  top: var(--top-h);
+  left: var(--side-w);
+  right: var(--side-w);
+  bottom: var(--bottom-h);
+  z-index: 1;
+  background: var(--c-screen);
+  /* scanlines légères */
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0, transparent 3px,
+      rgba(0, 0, 20, .04) 3px, rgba(0, 0, 20, .04) 4px);
+  overflow: hidden;
+}
+
+/* bezel intérieur + ombre de profondeur */
+.arcade-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow:
+    inset 0 0 0 5px var(--c-bezel),
+    inset 6px 6px 20px rgba(0, 0, 0, .25),
+    inset -6px -6px 20px rgba(0, 0, 0, .15);
+  z-index: 10;
+  pointer-events: none;
+}
+
+
+/* slot de contenu — vos pages s'insèrent ici */
+.arcade-content {
+  position: absolute;
+  inset: 5px;
+  z-index: 5;
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PANNEAU DE CONTRÔLE
+══════════════════════════════════════════════════════════ */
+.arcade-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--bottom-h);
+  background: var(--c-panel);
+  z-index: 100;
+  /* sous les joysticks (z:300) */
+  border-top: 4px solid var(--c-metal-hi);
+  box-shadow:
+    inset 0 3px 0 #2a2a2a,
+    0 -5px 28px rgba(0, 0, 0, .95);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 calc(var(--side-w) + 100px);
+}
+
+
+
+/* ══════════════════════════════════════════════════════════
+   JOYSTICKS
+   La bille (--joy-r de diamètre) dépasse en haut grâce à
+   margin-top négatif sur .joy-wrap
+══════════════════════════════════════════════════════════ */
+.joy-wrap {
+  position: relative;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: calc(-1 * var(--joy-up) - var(--joy-r));
+}
+
+/* plaque ronde vissée sur le panneau */
+.joy-plate {
+  width: calc(var(--joy-r) * 1.7);
+  height: calc(var(--joy-r) * 1.7);
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #2e2e2e, #0e0e0e);
+  border: 3px solid #3a3a3a;
+  box-shadow:
+    0 6px 0 #040404,
+    0 8px 20px rgba(0, 0, 0, .9),
+    inset 0 2px 0 #4a4a4a,
+    inset 0 -2px 0 #080808;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* croix directionnelle gravée */
+.joy-plate::before,
+.joy-plate::after {
+  content: '';
+  position: absolute;
+  background: #080808;
+  border-radius: 2px;
+}
+
+.joy-plate::before {
+  width: 58%;
+  height: 5px;
+}
+
+.joy-plate::after {
+  width: 5px;
+  height: 58%;
+}
+
+/* tige métallique */
+.joy-stick {
+  position: absolute;
+  /* dépasse au-dessus de la plaque */
+  bottom: 52%;
+  width: 14px;
+  height: 100px;
+  background: linear-gradient(to right,
+      #1a1a1a 0%, #666 30%, #999 50%, #5a5a5a 70%, #1a1a1a 100%);
+  border-radius: 7px 7px 3px 3px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, .8);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1;
+}
+
+/* bille — parfaitement ronde */
+.joy-ball {
+  width: calc(var(--joy-r) * 2);
+  height: calc(var(--joy-r) * 2);
+  border-radius: 50%;
+  margin-top: calc(-1 * var(--joy-r));
+  flex-shrink: 0;
+  box-shadow:
+    inset -8px -8px 16px rgba(0, 0, 0, .5),
+    inset 5px 5px 10px rgba(255, 255, 255, .22),
+    0 6px 20px rgba(0, 0, 0, .7);
+}
+
+.ball-blue {
+  background: radial-gradient(circle at 34% 28%, #99bbff, #0033bb);
+}
+
+.ball-red {
+  background: radial-gradient(circle at 34% 28%, #ff9999, #990000);
+}
+
+/* ══════════════════════════════════════════════════════════
+   BOUTONS
+══════════════════════════════════════════════════════════ */
+.btn-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+}
+
+.abtn {
+  border-radius: 50%;
+  border: none;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform .07s, box-shadow .07s;
+}
+
+/* reflet */
+.abtn::after {
+  content: '';
+  position: absolute;
+  top: 16%;
+  left: 16%;
+  width: 34%;
+  height: 26%;
+  background: rgba(255, 255, 255, .28);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+
+/* tailles */
+.abtn-lg {
+  width: 42px;
+  height: 42px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, .85), 0 0 10px currentColor;
+}
+
+.abtn-sm {
+  width: 28px;
+  height: 28px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, .85), 0 0 7px currentColor;
+}
+
+
+
+/* couleurs */
+.abtn-b {
+  background: radial-gradient(circle at 34% 28%, #5599ff, #0033bb);
+  color: #4488ff;
+}
+
+.abtn-r {
+  background: radial-gradient(circle at 34% 28%, #ff5566, #bb0022);
+  color: #ff4455;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   ZONE CENTRALE DU PANNEAU
+══════════════════════════════════════════════════════════ */
+.panel-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-score {
+  font-size: .42rem;
+  color: var(--c-cyan);
+  letter-spacing: .16em;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.panel-blink {
+  font-size: .46rem;
+  color: var(--c-stripe-2);
+  letter-spacing: .1em;
+}
+
+.coin-slot {
+  width: 48px;
+  height: 7px;
+  background: #030303;
+  border-radius: 4px;
+  border: 2px solid #2a2a2a;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 1);
+}
