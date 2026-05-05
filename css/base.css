@@ -1,0 +1,313 @@
+/* ================================================
+   common.css — Borne d'arcade, version simplifiée
+================================================ */
+
+@font-face {
+    font-family: "upheavtt";
+    src: url(../assets/fonts/upheavtt.ttf);
+}
+
+/* ── Variables ── */
+:root {
+    --bande-haut: 80px;
+    --bande-bas: 130px;
+    --cotees: 44px;
+    --clr-bg: #111;
+    --clr-screen: #c8c8cc;
+    --clr-font: #eeecc;
+    --clr-cyan: #00bbdd;
+    --clr-red: #cc2233;
+    --clr-blue: #1155cc;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #080808;
+    font-family: 'upheavtt', monospace;
+    color: #eeeccc;
+}
+
+
+/*bande haut*/
+.barre-haut {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--bande-haut);
+    background: var(--clr-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid #050505;
+    box-shadow: inset 0 -2px 0 #3c3c3c, 0 6px 28px rgba(0, 0, 0, .9);
+    z-index: 100;
+}
+
+.titre-site {
+    font-size: 1.8rem;
+    letter-spacing: .14em;
+    color: #eeeccc;
+    text-shadow: 2px 2px 0 #000, -1px -1px 0 #444;
+}
+
+/* ecran centre*/
+.ecran {
+    position: fixed;
+    top: var(--bande-haut);
+    left: var(--cotees);
+    right: var(--cotees);
+    bottom: var(--bande-bas);
+    background: var(--clr-screen);
+
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+.contenu-ecran {
+    position: absolute;
+    inset: 5px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* panneau de controle */
+.panneau-controle {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--bande-bas);
+    background: #111;
+    border-top: 4px solid #3c3c3c;
+    box-shadow: inset 0 3px 0 #2a2a2a, 0 -5px 28px rgba(0, 0, 0, .9);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 calc(var(--cotees) + 80px);
+    z-index: 100;
+}
+
+/* joysticks */
+.joystick {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -70px;
+    
+}
+
+.boule {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    box-shadow:
+        inset -6px -6px 14px rgba(0, 0, 0, .5),
+        inset 4px 4px 8px rgba(255, 255, 255, .2),
+        0 6px 16px rgba(0, 0, 0, .7);
+    position: relative;
+    z-index: 2;
+}
+
+.boule-bleue {
+    background: radial-gradient(circle at 34% 28%, #99bbff, #0033bb);
+}
+
+.boule-rouge {
+    background: radial-gradient(circle at 34% 28%, #ff9999, #990000);
+}
+
+.tige {
+    width: 18px;
+    height: 70px;
+    background: linear-gradient(to right, #1a1a1a, #666 40%, #999 50%, #5a5a5a 60%, #1a1a1a);
+    border-radius: 3px 3px 7px 7px;
+    position: relative;
+    z-index: 1;
+    margin-top: -4px;
+}
+
+.socle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 32%, #2e2e2e, #0e0e0e);
+    border: 3px solid #3a3a3a;
+    box-shadow: 0 6px 0 #040404, inset 0 2px 0 #4a4a4a;
+    margin-top: -50px;
+}
+
+/* boutons */
+.boutons {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.rangee-boutons {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+}
+
+.bouton {
+    border-radius: 50%;
+    border: none;
+    position: relative;
+}
+
+.bouton-grand {
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 8px 0 rgba(0, 0, 0, .85);
+}
+
+.bouton-petit {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, .85);
+}
+
+.bouton-bleu {
+    background: radial-gradient(circle at 34% 28%, #5599ff, #0033bb);
+}
+
+.bouton-rouge {
+    background: radial-gradient(circle at 34% 28%, #ff5566, #bb0022);
+}
+
+/* centre du panneau de controle */
+.panneau-centre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.score {
+    font-size: 1.5rem;
+    color: var(--clr-cyan);
+    letter-spacing: .16em;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.inserer-piece {
+    font-size: 1rem;
+    color: #bbb800;
+    letter-spacing: .1em;
+}
+
+.fente-piece {
+    width: 48px;
+    height: 7px;
+    background: #030303;
+    border-radius: 4px;
+    border: 2px solid #2a2a2a;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 1);
+}
+
+
+/*responsive*/
+
+@media (max-width: 1200px) {
+    .panneau-centre{
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .boule {
+        width: 70px;
+        height: 70px;
+    }
+
+
+    .socle {
+        width: 88px;
+        height: 88px;
+    }
+
+    .tige {
+        height: 55px;
+    }
+
+    .joystick {
+        margin-top: -55px;
+    }
+
+    .bouton-grand {
+        width: 30px;
+        height: 30px;
+    }
+
+    .bouton-petit {
+        width: 26px;
+        height: 26px;
+    }
+
+
+    .inserer-piece {
+        font-size: .8rem;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .panneau-controle .bouton-rouge {
+        display: none;
+    }
+}
+
+@media (max-width: 570px) {
+    .panneau-controle .joystick-rouge {
+        display: none;
+    }
+
+    .panneau-centre {
+        display: none;
+    }
+
+    .panneau-controle {
+        justify-content: center;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 320px) {
+    .boule {
+        width: 52px;
+        height: 52px;
+    }
+
+    .socle {
+        width: 66px;
+        height: 66px;
+    }
+
+    .tige {
+        height: 42px;
+    }
+
+    .joystick {
+        margin-top: -42px;
+    }
+
+    .bouton-grand {
+        width: 36px;
+        height: 36px;
+    }
+
+    .bouton-petit {
+        width: 24px;
+        height: 24px;
+    }
+
+    .panneau-controle {
+        padding: 0 12px;
+        gap: 16px;
+    }
+}
