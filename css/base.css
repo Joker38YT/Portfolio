@@ -45,11 +45,11 @@ body {
     z-index: 100;
 }
 
-.titre-site {
+.titre-site a {
     font-size: 1.8rem;
     letter-spacing: .14em;
     color: #eeeccc;
-    text-shadow: 2px 2px 0 #000, -1px -1px 0 #444;
+    text-decoration: none;
 }
 
 /* ecran centre*/

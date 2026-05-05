@@ -1,0 +1,13 @@
+.nav-barre ul{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    margin-top: 50px;
+}
+
+.nav-barre a {
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 30px;
+  
+}
