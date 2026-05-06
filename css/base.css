@@ -150,7 +150,7 @@ body {
 .rangee-boutons {
     display: flex;
     gap: 11px;
-    align-items: center;
+    justify-content: center;
 }
 
 .bouton {
@@ -253,12 +253,18 @@ body {
     .inserer-piece {
         font-size: .8rem;
     }
+
+   
 }
 
 
 @media (max-width: 700px) {
     .panneau-controle .bouton-rouge {
         display: none;
+    }
+
+     .boule-rouge{
+        background: radial-gradient(circle at 34% 28%, #5599ff, #0033bb);
     }
 }
 

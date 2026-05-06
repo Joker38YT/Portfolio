@@ -1,7 +1,7 @@
 .nav-barre ul{
     display: flex;
     justify-content: center;
-    gap: 10%;
+    gap: 5%;
     margin-top: 50px;
 }
 
@@ -9,5 +9,15 @@
   text-decoration: none;
   color: aliceblue;
   font-size: 30px;
-  
+  padding: 20px;
+  background-color: #111;
+}
+
+.nav-barre li {
+  list-style:none;
+}
+
+h1{
+  margin-top: 150px;
+  font-size: 50px;
 }
