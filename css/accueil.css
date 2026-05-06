@@ -17,7 +17,17 @@
   list-style:none;
 }
 
+.contenu
+
 h1{
   margin-top: 150px;
-  font-size: 50px;
+  font-size: 70px;
+text-shadow: 2px 2px 9px black;}
+
+h2 {
+  font-size: 40px;
+  text-shadow: 2px 2px 7px black;
+
 }
+
+
