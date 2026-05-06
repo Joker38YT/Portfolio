@@ -1,0 +1,68 @@
+ .tabcompetence {
+      padding: 7rem 0;
+      font-size: 20px;
+      font-style: normal;
+      letter-spacing: 4px;
+  }
+
+ .top-header {
+      background: var(--clr-bg);
+      color: var(--clr-font);
+      text-align: center;
+      font-size: 30px;
+      padding: 8px 12px;
+      margin-bottom: 6px;
+  }
+
+  .tabcompetence table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 8px 0;
+      table-layout: fixed;
+  }
+
+  .tabcompetence th {
+      background: var(--clr-bg);
+      color: var(--clr-font);
+      padding: 8px 6px;
+      text-align: center;
+      letter-spacing: 1px;
+  }
+
+  .tabcompetence th.col {
+      border-left: 3px solid var(--clr-bg);
+  }
+
+  .tabcompetence th.vide {
+      background: transparent;
+  }
+
+  .tabcompetence td.row-label {
+      background: var(--clr-bg);
+      color: var(--clr-font);
+      text-align: center;
+      padding: 12px 8px;
+      letter-spacing: 1px;
+  }
+
+  .tabcompetence td.cell {
+      border-left: 3px solid var(--clr-bg);
+      background: transparent;
+      text-align: center;
+      padding: 12px 0;
+      color: var(--clr-bg);
+  }
+
+  .tabcompetence tr.espacer td {
+      padding: 0;
+      height: 10px;
+      background: transparent;
+  }
+
+  .tabcompetence tr.espacer td.escell {
+      border-left: 3px solid var(--clr-bg);
+  }
+
+  .tabcompetence tr.espacer td.svide {
+      border-left: none;
+  }
