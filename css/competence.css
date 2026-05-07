@@ -80,8 +80,7 @@
         display: none;
     }
 
-    .tabcompetence th div{
-        display: none;
-    }
+    .tabcompetence th.col div   { display: none; }
+.tabcompetence th.col::after { content: attr(data-short); }
 
   }

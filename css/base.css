@@ -129,7 +129,25 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: -70px;
+    cursor: pointer;
+}
 
+.joystick .boule,
+.joystick .tige {
+    transition: transform 0.15s ease;
+}
+
+.joystick .tige {
+    transform-origin: center bottom;
+}
+
+.joystick .boule {
+    transform-origin: center calc(100% + 70px); /* 70px = hauteur de la tige */
+}
+
+.joystick:active .boule,
+.joystick:active .tige {
+    transform: rotate(10deg);
 }
 
 .boule {
@@ -177,6 +195,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 9px;
+    cursor: pointer;
+}
+
+.bouton:active{
+    transform: translateY(4px);
 }
 
 .rangee-boutons {
