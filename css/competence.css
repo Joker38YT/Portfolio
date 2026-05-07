@@ -1,8 +1,14 @@
  .tabcompetence {
-      padding: 7rem 0;
+      padding: 4rem 0;
       font-size: 20px;
       font-style: normal;
       letter-spacing: 4px;
+  }
+
+  .tabcompetence .pac-man{
+    size: 50%;
+    max-width: 70px;
+    max-height: 70px;
   }
 
  .top-header {
@@ -20,6 +26,7 @@
       border-spacing: 8px 0;
       table-layout: fixed;
   }
+
 
   .tabcompetence th {
       background: var(--clr-bg);
@@ -65,4 +72,16 @@
 
   .tabcompetence tr.espacer td.svide {
       border-left: none;
+  }
+
+
+  @media (max-width:1070px) {
+    .tabcompetence td.row-label div{
+        display: none;
+    }
+
+    .tabcompetence th div{
+        display: none;
+    }
+
   }
