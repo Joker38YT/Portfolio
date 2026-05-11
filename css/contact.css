@@ -27,3 +27,10 @@
     margin: 10px 0;
     text-shadow: 3px 3px 15px black;
 }
+
+
+@media (max-width: 480px) {
+    .contact a, .contact p, .element h1 {
+    font-size: 100%;
+    }
+}

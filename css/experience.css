@@ -2,14 +2,13 @@
     display: flex;
     flex-direction: row;
     gap: 15px;
-    padding: 20px 10%;
-    margin-top: 30px;
+    margin: 30px 10%;
+    letter-spacing: 2px;
 }  
 
 .logoent {
     border: 2px solid var(--clr-cyan); 
     max-width: 200px;
-    max-height: auto;
 }
 
 .ent-item {
@@ -35,8 +34,9 @@
     align-items: flex-start;
     max-height: 0; 
     opacity: 0;
-    padding: 0 20px;
     overflow: hidden;
+    padding: 0;
+    letter-spacing: 1px;
 }
 
 
@@ -52,14 +52,27 @@
 }
 
 .ent-item:hover .ent-details {
-  max-height: 1000px;
+  max-height: 100%;
   opacity: 1;
-  padding: 0 20px 20px 20px;
+  padding: 0 20px;
 }
 
 .ent-item:hover .logoent{
     max-height: max-content;
-    max-width:fit-content;
-    height: auto;
-    width: auto;
+    max-width:max-content;
+    height: 100%;
+    width: 100%;
+}
+
+
+@media (max-width: 1024px) {
+  .ent-item{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 330px){
+  .titre h2{
+    font-size: 110%;
+  }
 }
