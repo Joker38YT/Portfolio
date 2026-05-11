@@ -20,7 +20,7 @@
     font-size: 450%;
 }
 
-.contact a {
+.contact a, .contact p {
     font-size: 200%;
     text-decoration: none;
     color: white;
