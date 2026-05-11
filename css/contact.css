@@ -3,21 +3,21 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 .element span{
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: rgba(0,0,0, 0.3) ;
+    background-color: rgba(0,0,0, 0.5) ;
 
 }
 
 .element h1{
     color: rgb(163, 0, 0);
     letter-spacing: 3px;
-    font-size: 600%;
+    font-size: 450%;
 }
 
 .contact a {
