@@ -1,0 +1,65 @@
+.liste-entreprise{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 20px 10%;
+    margin-top: 30px;
+}  
+
+.logoent {
+    border: 2px solid var(--clr-cyan); 
+    max-width: 200px;
+    max-height: auto;
+}
+
+.ent-item {
+  background-color: #1a1a1a;
+  border: 2px solid var(--clr-font);
+  color: var(--clr-font);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.titre{
+    margin-left: 10px;
+}
+
+.ent-details {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 0; 
+    opacity: 0;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+
+
+.ent-item:hover {
+  background-color: #222222;
+  border-color: var(--clr-cyan);
+  box-shadow: 0 0 15px rgba(0, 187, 221, 0.3);
+}
+
+.ent-item:hover .projet-header {
+  color: var(--clr-cyan);
+}
+
+.ent-item:hover .ent-details {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 0 20px 20px 20px;
+}
+
+.ent-item:hover .logoent{
+    max-height: max-content;
+    max-width:fit-content;
+    height: auto;
+    width: auto;
+}
