@@ -1,0 +1,7 @@
+.presentation{
+    display: flex;
+    gap: 300px;
+    margin: 100px 10%;
+    font-size: 25px;
+    text-shadow: 3px 3px 15px black;
+}

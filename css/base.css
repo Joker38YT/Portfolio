@@ -145,10 +145,16 @@ body {
     transform-origin: center calc(100% + 70px); /* 70px = hauteur de la tige */
 }
 
-.joystick:active .boule,
-.joystick:active .tige {
+.joystick-bleue:active .boule,
+.joystick-bleue:active .tige {
+    transform: rotate(-10deg);
+}
+
+.joystick-rouge:active .boule,
+.joystick-rouge:active .tige {
     transform: rotate(10deg);
 }
+
 
 .boule {
     width: 90px;

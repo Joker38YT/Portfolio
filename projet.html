@@ -22,24 +22,164 @@
                     <li><a href="a_propos.html">A Propos de moi</a></li>
                     <li><a href="competence.html">Compétences</a></li>
                     <li><a href="experience.html">Expériences</a></li>
-                    <li><a  class="selectionner" href="projet.html">Projets</a></li>
+                    <li><a class="selectionner" href="projet.html">Projets</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </span>
-           
 
-            
+            <section class="liste-projets">
+
+                <article class="projet-item ">
+                    <div class="projet-header">Raspberry Pi</div>
+                    <div class="projet-details">
+                        <div class="projet-description">
+                            <p>C'est mon projet actuel le plus complet. Au début, je voulais juste une petite machine
+                                pour faire tourner des bots Discord H24. Finalement, je l'ai poussé beaucoup plus loin :
+                            </p>
+                            <ul>
+                                <li>Accès distant : J'utilise Tailscale pour me connecter au Raspberry depuis n'importe
+                                    où (téléphone, PC portable) de façon sécurisée.</li><br>
+                                <li>Auto-hébergement : J'ai configuré un tunnel pour obtenir une URL publique. Ça me
+                                    permet d'héberger moi-même mes sites, dont ce portfolio, sans avoir à toucher aux
+                                    ports de ma box internet.</li><br>
+                                <li>Cloud personnel : J'ai installé FileBrowser pour gérer mes fichiers. Ça me sert de
+                                    drive perso pour transférer des gros fichiers (plusieurs dizaines de Go)
+                                    gratuitement et sans limites.</li><br>
+                                <li>Services : J'y ai aussi ajouté plusieurs outils pratiques au quotidien, comme un
+                                    calendrier synchronisé et un traducteur local.</li>
+                            </ul>
+                        </div>
+                        <div class="projet-galerie">
+                            <img src="assets/img_projets/rpi_controller.png" alt="Aperçu App pi" class="projet-img">
+                        </div>
+                    </div>
+                </article>
+
+                <article class="projet-item">
+                    <div class="projet-header">Sim racing</div>
+                    <div class="projet-details">
+                        <div class="projet-description">
+                            <p>Les jeux vidéo de conduite, c'est bien. Mais pouvoir y jouer sur un simulateur, c'est
+                                encore mieux. <br>
+                                Le problème, c'est qu'un simulateur, même bas de gamme, coûte cher. À moins de le
+                                fabriquer soi-même !<br>
+                                Ainsi, avec du bois, des câbles, un moteur récupéré sur une vieille voiture
+                                télécommandée, un capteur de position, des boutons et des Arduinos Leonardo, j'ai
+                                fabriqué mon propre volant à retour de force, un levier de vitesse séquentiel, un levier
+                                de vitesse en boîte en H, un frein à main et une boîte à boutons.
+                            </p>
+
+                            <a href="https://github.com/Joker38YT/SimRacing" target="_blank">le code source</a>
+                        </div>
+                        <div class="projet-galerie grid-2x2">
+                            <img src="assets/img_projets/boiteH.jpg" alt="Aperçu volant" class="projet-img">
+                            <img src="assets/img_projets/buttunbox.jpg"
+                                alt="Aperçu levier vitesse sequencielle frein à main" class="projet-img">
+                            <img src="assets/img_projets/lev_sequ.jpg" alt="Aperçu boite en H" class="projet-img ">
+                            <img src="assets/img_projets/volant.jpg" alt="Aperçu button box" class="projet-img ">
+                        </div>
+                    </div>
+                </article>
+
+                <article class="projet-item">
+                    <div class="projet-header">Nation War</div>
+                    <div class="projet-details">
+                        <div class="projet-description">
+                            <p>
+                                Né d'une idée de trois collégiens, Nation War a sans doute été mon plus gros projet.
+                                <br>
+                                Un serveur de jeu Roleplay géopolitique entièrement sur Discord. <br> Afin de pouvoir
+                                gérer le système d'économie, d'alliance, de carte du monde, etc., nous avons dû créer
+                                notre propre bot Discord en JavaScript. <br> Le serveur a malheureusement fermé il y a
+                                quelque temps par manque de temps pour s'en occuper. Mais peut-être reviendra-t-il un
+                                jour.
+
+                            </p>
+                        </div>
+                        <div class="projet-galerie">
+                            <img src="assets/img/projet3.jpg" alt="Aperçu NW" class="projet-img">
+                        </div>
+                    </div>
+                </article>
+
+                <article class="projet-item">
+                    <div class="projet-header">L'écran de PC</div>
+                    <div class="projet-details">
+                        <div class="projet-description">
+                            <p>
+                                Je n'aime pas jeter inutilement, surtout si je peux réutiliser. <br> Alors quand il a
+                                fallu recycler une vieille tablette, je me suis dit : "Pourquoi pas en faire un écran de
+                                PC ?". <br> Après avoir démonté l'entièreté de la tablette pour récupérer la dalle LCD,
+                                il ne me manque plus qu'une carte contrôleur LCD 40 pins pour faire fonctionner le tout.
+
+                            </p>
+                        </div>
+                        <div class="projet-galerie">
+                            <img src="assets/img_projets/dalle_LCD.jpg" alt="Aperçu Projet 4" class="projet-img">
+                        </div>
+                    </div>
+                </article>
+
+                <article class="projet-item">
+                    <div class="projet-header">"My NPC live"</div>
+                    <div class="projet-details">
+                        <div class="projet-description">
+                            <p>
+                                "My NPC Live" est un petit jeu de plateforme comme Mario Bros qui intègre des éléments
+                                de
+                                programmation comme Scratch, permettant au joueur de directement modifier les propriétés
+                                de son personnage. Le projet a été entièrement codé en Lua à cause du moteur graphique
+                                que nous avions choisi et est encore loin d'être terminé. <br> De plus, nous souhaitons
+                                entièrement recommencer le projet avec le moteur graphique Godot Engine qui nous
+                                permettra de développer en Python, un langage que nous maîtrisons bien mieux que le Lua.
+
+
+                            </p>
+                            <!-- <a href="" target="_blank">Le code source</a> -->
+                        </div>
+
+                        <div class="projet-galerie grid-2x2">
+                            <img src="assets/img_projets/MyNPCLive_menu.png" alt="Aperçu MNL Menus" class="projet-img">
+                            <img src="assets/img_projets/MNL_code.png" alt="Aperçu MNL Code" class="projet-img">
+                            <img src="assets/img_projets/MNL_terminal.png" alt="Aperçu MNL Terminal" class="projet-img">
+                            <img src="assets/img_projets/MNL_game.png" alt="Aperçu MNL In Game" class="projet-img">
+                        </div>
+
+                </article>
+
+                <article class="projet-item">
+                    <div class="projet-header">Chat Bot Star Wars</div>
+                    <div class="projet-details">
+                        <div class="projet-description">
+                            <p>
+                                Durant ma première année de BUT Informatique, j'ai été amené à développer un chatbot
+                                spécialisé dans un domaine. <br> Étant un fan de Star Wars, j'ai décidé de le
+                                spécialiser dans cet univers. <br> Le projet a entièrement été codé en Java.
+
+                            </p>
+
+                            <a href="https://github.com/groupe-SAE-1-12/Projet_Chatbot" target="_blank">le code
+                                source</a>
+                        </div>
+                        <div class="projet-galerie">
+                            <img src="assets/img_projets/chatbot.png" alt="Aperçu Chatbot" class="projet-img">
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+
         </div>
     </main>
 
     <footer class="panneau-controle">
-
-        <div class="joystick joystick-bleue">
-            <div class="boule boule-bleue"></div>
-            <div class="tige"></div>
-            <div class="socle"></div>
-        </div>
-
+        <a href="./experience.html">
+            <div class="joystick joystick-bleue">
+                <div class="boule boule-bleue"></div>
+                <div class="tige"></div>
+                <div class="socle"></div>
+            </div>
+        </a>
         <div class="boutons">
             <div class="rangee-boutons">
                 <div class="bouton bouton-bleu bouton-grand"></div>
@@ -72,13 +212,16 @@
             </div>
         </div>
 
-        <div class="joystick joystick-rouge">
-            <div class="boule boule-rouge"></div>
-            <div class="tige"></div>
-            <div class="socle"></div>
-        </div>
-
+        <a href="./contact.html">
+            <div class="joystick joystick-rouge">
+                <div class="boule boule-rouge"></div>
+                <div class="tige"></div>
+                <div class="socle"></div>
+            </div>
+        </a>
     </footer>
+
+    <script src="./js/projet.js"></script>
 
 </body>
 

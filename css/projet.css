@@ -1,0 +1,127 @@
+.liste-projets {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 10%;
+    margin-top: 20px;
+}
+
+.projet-item {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: 2px solid var(--clr-font);
+  color: var(--clr-font);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.projet-header {
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.projet-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-height: 0; 
+    opacity: 0;
+    padding: 0 20px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.projet-description {
+    flex: 1;
+    padding-right: 20px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #cccccc; 
+}
+
+.projet-description a{
+    color: rgb(0, 182, 182);
+}
+
+
+.projet-galerie {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+    flex: 1;
+    max-width: 50%;
+}
+
+.projet-img {
+    max-width: 400px;
+    max-height: 300px;
+    object-fit: cover;
+    border: 2px solid var(--clr-cyan); 
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 187, 221, 0.1);
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+
+.projet-img:hover {
+    transform: scale(1.1);
+}
+
+.grid-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+      width: 100%;
+      max-width: 900px;
+    }
+ 
+  
+
+.projet-item.actif {
+  background-color: #222222;
+  border-color: var(--clr-cyan);
+  box-shadow: 0 0 15px rgba(0, 187, 221, 0.3);
+}
+
+.projet-item.actif .projet-header {
+  color: var(--clr-cyan);
+}
+
+.projet-item.actif .projet-details {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 0 20px 20px 20px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .projet-details {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .projet-description {
+        padding-right: 0;
+    }
+
+    .projet-galerie {
+        max-width: 100%;
+        justify-content: center;
+    }
+    
+    .projet-img {
+        width: 100%;
+        height: auto;
+    }
+}

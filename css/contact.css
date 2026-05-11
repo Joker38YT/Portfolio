@@ -1,0 +1,29 @@
+.element, .element .contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.element span{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(0,0,0, 0.3) ;
+
+}
+
+.element h1{
+    color: rgb(163, 0, 0);
+    letter-spacing: 3px;
+    font-size: 600%;
+}
+
+.contact a {
+    font-size: 200%;
+    text-decoration: none;
+    color: white;
+    margin: 10px 0;
+    text-shadow: 3px 3px 15px black;
+}
