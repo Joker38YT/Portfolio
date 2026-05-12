@@ -36,6 +36,17 @@
 @media (max-width:425px) {
   .contenu-ecran .nom{
     word-break: break-word ;
+    
   }   
+  .contenu-ecran h1{
+    font-size: 30px;
+  }
 }
 
+@media (max-width:325px) {
+  
+  .contenu-ecran .nom{
+    margin-left: 0;
+  }
+  
+}
