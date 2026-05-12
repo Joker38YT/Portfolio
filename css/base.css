@@ -281,7 +281,7 @@ body {
 }
 
 @media (max-width: 1200px) {
-    .panneau-centre {
+   .panneau-centre {
         display: none;
     }
 }
@@ -343,20 +343,13 @@ body {
 
 
 @media (max-width: 700px) {
-    .panneau-controle .bouton-rouge {
+    .panneau-controle .bouton-bleu, .panneau-controle .bouton-rouge {
         display: none;
-    }
-
-    .boule-rouge {
-        background: radial-gradient(circle at 34% 28%, #5599ff, #0033bb);
     }
 }
 
 @media (max-width: 570px) {
-    .panneau-controle .joystick-rouge {
-        display: none;
-    }
-
+    
     .panneau-centre {
         display: none;
     }

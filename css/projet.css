@@ -125,3 +125,11 @@
         height: auto;
     }
 }
+
+
+@media (max-width:680px ) {
+    .projet-item:hover .projet-details{
+        max-height: none;
+        height: 100%;
+    }
+}

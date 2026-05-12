@@ -84,3 +84,9 @@
 .tabcompetence th.col::after { content: attr(data-short); }
 
   }
+
+  @media (max-width: 425px) {
+    .top-header{
+        font-size: 100%;
+    }
+  }
