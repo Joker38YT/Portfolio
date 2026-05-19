@@ -76,7 +76,7 @@ body {
 
 .contenu-ecran {
     position: absolute;
-    inset: 5px;
+    inset: 0;
     overflow: auto;
     padding-bottom: 40px;
     z-index: 1;

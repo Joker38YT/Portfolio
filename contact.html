@@ -26,31 +26,39 @@
                     <li><a class="selectionner" href="contact.html">Contact</a></li>
                 </ul>
             </span>
-           
-            <div class="element">
-            <span >
-                <h1>Contact</h1>
-            </span>
-            <div class="contact">
-            <!--<a href="mailto:quentin.boussaguet@icloud.com" target="_blank">Contactez-moi par mail</a>-->
-            <p>Contactez-moi à l'adresse mail "prenom.nom@etu.univ-grenoble-alpes.fr"</p>
-            <a href="https://github.com/Joker38YT" target="_blank">Github</a>
-</div>
-</div>
 
-            
+            <div class="element">
+                <span>
+                    <h1>Contact</h1>
+                </span>
+                <div class="contact">
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <input type="text" name="nom" placeholder="NOM" required />
+                            <input type="email" name="email" placeholder="EMAIL" required />
+                        </div>
+                        <input type="text" name="sujet" placeholder="SUJET" required />
+                        <textarea name="message" placeholder="MESSAGE..." rows="5" required></textarea>
+                        <button type="submit">ENVOYER ►</button>
+                    </form>
+                    <p id="form-confirm" class="form-confirm">★ MESSAGE ENVOYÉ !</p>
+                    <a href="https://github.com/Joker38YT" target="_blank">Github</a>
+                </div>
+            </div>
+
+
         </div>
     </main>
 
     <footer class="panneau-controle">
 
         <a href="projet.html">
-        <div class="joystick joystick-bleue">
-            <div class="boule boule-bleue"></div>
-            <div class="tige"></div>
-            <div class="socle"></div>
-        </div>
-</a>
+            <div class="joystick joystick-bleue">
+                <div class="boule boule-bleue"></div>
+                <div class="tige"></div>
+                <div class="socle"></div>
+            </div>
+        </a>
         <div class="boutons">
             <div class="rangee-boutons">
                 <div class="bouton bouton-bleu bouton-grand"></div>
@@ -90,6 +98,7 @@
         </div>
 
     </footer>
+    <script src="./js/commun.js" defer></script>
 
 </body>
 

@@ -5,3 +5,10 @@ function enClick(elem) {
         elem.classList.add("active");
     }
 }
+
+
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('form-confirm').style.display = 'block';
+});
