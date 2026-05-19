@@ -12,13 +12,13 @@
 <body>
 
     <header class="barre-haut">
-        <span class="titre-site"><a href="accueil.html">PORTFOLIO DE QUENTIN BOUSSAGUET</a></span>
     </header>
 
     <main class="ecran">
         <div class="contenu-ecran">
             <span class="nav-barre">
                 <ul>
+                    <li><a href="accueil.html">Accueil</a></li>
                     <li><a href="a_propos.html">A Propos de moi</a></li>
                     <li><a href="competence.html">Compétences</a></li>
                     <li><a class="selectionner" href="experience.html">Expériences</a></li>
@@ -28,7 +28,7 @@
             </span>
             
             <section class="liste-entreprise">
-                <article class="ent-item">
+                <article class="ent-item clicable" onclick="enClick(this)">
                     <img src="./assets/logo_ent/logo_cic_orio.jpeg" class="logoent" alt="logo CIC orio">
                     <div class="titre">
                     <h1>CIC Orio</h1>
@@ -48,6 +48,23 @@
                     </div>
                 </article>
 
+                <article class="ent-item clicable" onclick="enClick(this)">
+                    <div class="titre">
+                    <h1>Site Web Capgemini</h1>
+                        <h3>Novembre 2025 <br>jusqu'à <br>Janvier 2026</h3>
+                        </div>
+                    <div class="ent-details">
+                        
+                        <p>Dans le cadre d'un projet
+                        <ul>
+                            <li>Examiner et remettre en service de vieux ordinateurs qui restaient dans la réserve</li>
+                            <li>Effectuer de l'archivage entre le serveur principale et les serveurs de sauvegarde.</li>
+                            <li>Intervenir sur un ordinateur en service afin de l'améliorer.</li>
+                            <li>Réalisation d'un guide pour l'utilisation du logiciel "Robocopie" après mon départ, utile pour l'archivage.</li>
+                        </ul>
+                        </p>
+                    </div>
+                </article>
 
 
             </section>
@@ -106,6 +123,8 @@
         </div>
 </a>
     </footer>
+
+    <script src="./js/onclick.js"></script>
 
 </body>
 

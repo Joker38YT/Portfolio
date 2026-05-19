@@ -88,17 +88,17 @@
  
   
 
-.projet-item:hover {
+.projet-item.active {
   background-color: #222222;
   border-color: var(--clr-cyan);
   box-shadow: 0 0 15px rgba(0, 187, 221, 0.3);
 }
 
-.projet-item:hover .projet-header {
+.projet-item.active .projet-header {
   color: var(--clr-cyan);
 }
 
-.projet-item:hover .projet-details {
+.projet-item.active .projet-details {
   max-height: 1000px;
   opacity: 1;
   padding: 0 20px 20px 20px;
@@ -128,7 +128,7 @@
 
 
 @media (max-width:680px ) {
-    .projet-item:hover .projet-details{
+    .projet-item.active .projet-details{
         max-height: none;
         height: 100%;
     }

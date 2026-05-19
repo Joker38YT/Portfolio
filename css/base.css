@@ -21,6 +21,7 @@ body {
     background: #080808;
     font-family: 'upheavtt', monospace;
     color: var(--clr-font);
+    line-height: 1.5;
 }
 
 .logo {

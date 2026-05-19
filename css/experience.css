@@ -8,7 +8,8 @@
 
 .logoent {
     border: 2px solid var(--clr-cyan); 
-    max-width: 200px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .ent-item {
@@ -41,23 +42,23 @@
 
 
 
-.ent-item:hover {
+.ent-item.active {
   background-color: #222222;
   border-color: var(--clr-cyan);
   box-shadow: 0 0 15px rgba(0, 187, 221, 0.3);
 }
 
-.ent-item:hover .projet-header {
+.ent-item.active .projet-header {
   color: var(--clr-cyan);
 }
 
-.ent-item:hover .ent-details {
+.ent-item.active .ent-details {
   max-height: 100%;
   opacity: 1;
   padding: 0 20px;
 }
 
-.ent-item:hover .logoent{
+.ent-item.active .logoent{
     max-height: max-content;
     max-width:max-content;
     height: 100%;
