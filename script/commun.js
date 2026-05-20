@@ -1,13 +1,13 @@
 function enClick(elem) {
     const dejàOuvert = elem.classList.contains("active");
-        document.querySelectorAll(".clicable").forEach(e => e.classList.remove("active"));
+    document.querySelectorAll(".clicable").forEach(e => e.classList.remove("active"));
     if (!dejàOuvert) {
         elem.classList.add("active");
     }
 }
 
 
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
+document.querySelector('.contact-form').addEventListener('submit', function (e) {
     e.preventDefault(); // Empêche la page de recharger
 
     const form = this;
@@ -24,18 +24,25 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Ton code d'origine pour afficher le succès
-            form.style.display = 'none';
-            document.getElementById('form-confirm').style.display = 'block';
-        } else {
-            alert("Erreur lors de la validation du message.");
-        }
-    })
-    .catch(error => {
-        console.error("Erreur réseau :", error);
-        alert("Impossible de joindre le système de transmission.");
-    });
+        .then(response => {
+            // Si le serveur renvoie une erreur (400, 429, 503...), on extrait quand même le JSON
+            return response.json().then(data => {
+                if (!response.ok) {
+                    // Si la réponse n'est pas "OK", on rejette avec le message du serveur
+                    throw new Error(data.error || "Erreur inconnue");
+                }
+                return data;
+            });
+        })
+        .then(data => {
+            if (data.success) {
+                form.style.display = 'none';
+                document.getElementById('form-confirm').style.display = 'block';
+            }
+        })
+        .catch(error => {
+            console.error("Erreur :", error);
+            // ICI : Ça va maintenant afficher le VRAI message d'erreur configuré dans Node.js !
+            alert(error.message);
+        });
 });
