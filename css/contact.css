@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: column;
     margin-top: 70px;
+    gap: 40px;
 }
 
 .element span{
@@ -33,13 +34,14 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    width: 60%;
-    max-width: 600px;
+    width: 200%;
+    height: 200%;
 }
 
 .form-row {
     display: flex;
     gap: 14px;
+    height: 80px;
 }
 
 .contact-form input,
@@ -55,11 +57,14 @@
     box-sizing: border-box;
     outline: none;
     letter-spacing: 2px;
+    height: 80px;
+
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
     color: #555;
+    font-size: 2rem;
 }
 
 .contact-form input:focus,
@@ -70,20 +75,23 @@
 
 .contact-form textarea {
     resize: none;
+    height: 150px;
+
 }
 
 .contact-form button {
-    align-self: flex-end;
     background: var(--clr-red);
     color: var(--clr-font);
     font-family: 'upheavtt', monospace;
-    font-size: 1rem;
+    font-size: 2rem;
     letter-spacing: 3px;
     border: none;
     padding: 10px 28px;
     cursor: pointer;
     box-shadow: 0 4px 0 #6a0000;
     transition: transform 0.1s;
+    height: 80px;
+
 }
 
 .contact-form button:active {
@@ -99,13 +107,14 @@
     text-shadow: 3px 3px 15px black;
 }
 
-@media (max-width: 700px) {
-    .contact-form { width: 90%; }
+@media (max-width: 1210px) {
+    .contact-form { width: 90%;
+    gap: 5%; }
     .form-row { flex-direction: column; }
 }
 
 @media (max-width: 480px) {
-    .contact a, .contact p, .element h1 {
-    font-size: 100%;
+    .element h1, input::placeholder {
+    font-size: 2rem;
     }
 }
