@@ -54,12 +54,6 @@ body {
     box-shadow: inset 0 -2px 0 #3c3c3c, 0 6px 28px rgba(0, 0, 0, .9);
 }
 
-.titre-site a {
-    font-size: 1.8rem;
-    letter-spacing: .14em;
-    color: #eeeccc;
-    text-decoration: none;
-}
 
 /* ecran centre*/
 .ecran {
@@ -84,10 +78,10 @@ body {
 
 .nav-barre ul {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: row;
     margin-top: 50px;
-    gap: 2%;
+    padding: 0;
 }
 
 .nav-barre a {

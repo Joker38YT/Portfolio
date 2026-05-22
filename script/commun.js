@@ -8,7 +8,7 @@ function enClick(elem) {
 
 
 document.querySelector('.contact-form').addEventListener('submit', function (e) {
-    e.preventDefault(); // Empêche la page de recharger
+    e.preventDefault(); 
 
     const form = this;
     const payload = {
@@ -18,17 +18,16 @@ document.querySelector('.contact-form').addEventListener('submit', function (e) 
         message: form.querySelector('textarea[name="message"]').value
     };
 
-    // On envoie à /api/contact, Nginx s'occupe de faire le pont vers le port 4000
     fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
     })
         .then(response => {
-            // Si le serveur renvoie une erreur (400, 429, 503...), on extrait quand même le JSON
+          
             return response.json().then(data => {
                 if (!response.ok) {
-                    // Si la réponse n'est pas "OK", on rejette avec le message du serveur
+                    
                     throw new Error(data.error || "Erreur inconnue");
                 }
                 return data;
@@ -42,7 +41,7 @@ document.querySelector('.contact-form').addEventListener('submit', function (e) 
         })
         .catch(error => {
             console.error("Erreur :", error);
-            // ICI : Ça va maintenant afficher le VRAI message d'erreur configuré dans Node.js !
+          
             alert(error.message);
         });
 });
