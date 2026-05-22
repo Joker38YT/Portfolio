@@ -4,6 +4,12 @@ function enClick(elem) {
     if (!dejàOuvert) {
         elem.classList.add("active");
     }
+    setTimeout(() => {
+        elem.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, 10);
 }
 
 
