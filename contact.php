@@ -1,7 +1,9 @@
 <?php
-// 1. Initialisation de la session pour l'anti-spam par IP/navigateur
-session_start();
+// Forcer l'affichage des erreurs PHP
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
+session_start();
 header('Content-Type: application/json');
 
 // 2. Accepter uniquement les requêtes POST
