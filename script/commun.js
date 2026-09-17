@@ -12,42 +12,33 @@ function enClick(elem) {
     }, 10);
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.contact-form');
+    
+    if (form) {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
 
-document.querySelector('.contact-form').addEventListener('submit', function (e) {
-    e.preventDefault(); 
+            const formData = new FormData(this);
 
-    const form = this;
-    const payload = {
-        nom: form.querySelector('input[name="nom"]').value,
-        email: form.querySelector('input[name="email"]').value,
-        sujet: form.querySelector('input[name="sujet"]').value,
-        message: form.querySelector('textarea[name="message"]').value
-    };
+            try {
+                const response = await fetch('contact.php', {
+                    method: 'POST',
+                    body: formData
+                });
 
-    fetch("/api/contact/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    })
-        .then(response => {
-          
-            return response.json().then(data => {
-                if (!response.ok) {
-                    
-                    throw new Error(data.error || "Erreur inconnue");
+                const result = await response.json();
+
+                if (result.success) {
+                    this.style.display = 'none';
+                    document.getElementById('form-confirm').style.display = 'block';
+                } else {
+                    alert('Erreur : ' + (result.message || "Erreur lors de l'envoi"));
                 }
-                return data;
-            });
-        })
-        .then(data => {
-            if (data.success) {
-                form.style.display = 'none';
-                document.getElementById('form-confirm').style.display = 'block';
+            } catch (error) {
+                console.error("Erreur :", error);
+                alert("Impossible de joindre le serveur.");
             }
-        })
-        .catch(error => {
-            console.error("Erreur :", error);
-          
-            alert(error.message);
         });
+    }
 });
