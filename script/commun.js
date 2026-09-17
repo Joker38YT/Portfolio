@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (error) {
                 console.error("Erreur :", error);
-                alert("Impossible de joindre le serveur.");
+                alert("Erreur JS/Réseau : " + error.message);
             }
         });
     }
