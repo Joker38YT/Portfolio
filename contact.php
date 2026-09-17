@@ -1,66 +1,61 @@
 <?php
-// Forcer l'affichage des erreurs PHP
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// Désactiver les warnings parasites pour garder un JSON propre
+error_reporting(0);
+ini_set('display_errors', 0);
 
 session_start();
+
 header('Content-Type: application/json');
 
-// 2. Accepter uniquement les requêtes POST
+// 1. Uniquement les requêtes POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false, 'message' => 'Méthode non autorisée.']);
     exit;
 }
 
-// 3. SÉCURITÉ : Anti-spam temporel (1 envoi toutes les 30 secondes max)
-if (isset($_SESSION['dernier_envoi']) && (time() - $_SESSION['dernier_envoi']) < 30) {
-    echo json_encode(['success' => false, 'message' => 'Veuillez patienter 30 secondes entre chaque envoi.']);
-    exit;
+// 2. Vérification Anti-Spam (30 secondes)
+$maintenant = time();
+if (isset($_SESSION['dernier_envoi'])) {
+    $tempsEcoule = $maintenant - $_SESSION['dernier_envoi'];
+    if ($tempsEcoule < 30) {
+        $attente = 30 - $tempsEcoule;
+        echo json_encode(['success' => false, 'message' => "Veuillez patienter encore {$attente} seconde(s)."]);
+        exit; // Stoppe net le script si le délai n'est pas passé
+    }
 }
 
-// 4. Nettoyage et assainissement des données reçues
+// 3. Récupération et nettoyage des champs
 $nom     = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
 $email   = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 $sujet   = filter_input(INPUT_POST, 'sujet', FILTER_SANITIZE_SPECIAL_CHARS);
 $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_SPECIAL_CHARS);
 
-// Vérification de la présence de tous les champs
 if (!$nom || !$email || !$sujet || !$message) {
     echo json_encode(['success' => false, 'message' => 'Champs invalides ou incomplets.']);
     exit;
 }
 
-// 5. SÉCURITÉ : Limiter la longueur des champs pour éviter les abus de mémoire
-$nom     = mb_substr(trim($nom), 0, 80);
-$email   = mb_substr(trim($email), 0, 100);
-$sujet   = mb_substr(trim($sujet), 0, 100);
-$message = mb_substr(trim($message), 0, 2000);
+// Limiter la taille des données
+$nom     = substr(trim($nom), 0, 80);
+$email   = substr(trim($email), 0, 100);
+$sujet   = substr(trim($sujet), 0, 100);
+$message = substr(trim($message), 0, 2000);
 
-// 6. Définition du chemin du fichier JSON
 $fichierJson = '/srv/portfolio/data/message.json';
-$dossier     = dirname($fichierJson);
 
-// Si le dossier n'existe pas, tentative de création
-if (!is_dir($dossier)) {
-    mkdir($dossier, 0755, true);
-}
-
-// 7. SÉCURITÉ : Anti-saturation du stockage (5 Mo max pour message.json)
-if (file_exists($fichierJson) && filesize($fichierJson) > 5 * 1024 * 1024) {
-    echo json_encode(['success' => false, 'message' => 'La boîte de réception est actuellement pleine.']);
-    exit;
-}
-
-// 8. Lecture et parsing des messages existants
+// 4. Lecture des messages existants
 $donneesExistantes = [];
 if (file_exists($fichierJson)) {
     $contenu = file_get_contents($fichierJson);
-    $donneesExistantes = json_decode($contenu, true) ?? [];
+    $donneesExistantes = json_decode($contenu, true);
+    if (!is_array($donneesExistantes)) {
+        $donneesExistantes = [];
+    }
 }
 
-// 9. Création de la nouvelle entrée
-$nouveauMessage = [
-    'id'      => uniqid('', true),
+// 5. Ajout du message
+$donneesExistantes[] = [
+    'id'      => time() . '_' . mt_rand(1000, 9999),
     'date'    => date('Y-m-d H:i:s'),
     'nom'     => $nom,
     'email'   => $email,
@@ -69,16 +64,16 @@ $nouveauMessage = [
     'ip'      => $_SERVER['REMOTE_ADDR'] ?? 'inconnue'
 ];
 
-// Ajout du message dans la liste
-$donneesExistantes[] = $nouveauMessage;
-
-// 10. Écriture sécurisée dans le fichier JSON
+// 6. Écriture dans le fichier + mise à jour du timer
 $jsonEnregistre = json_encode($donneesExistantes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
 if (file_put_contents($fichierJson, $jsonEnregistre, LOCK_EX) !== false) {
-    // SÉCURITÉ ACCÈS : Forcer les droits de lecture/écriture pour le bot Node.js
+    // On met à jour l'heure du dernier envoi SEULEMENT si l'écriture a réussi
+    $_SESSION['dernier_envoi'] = $maintenant;
+    
+    // Permission 666 pour l'accès écriture du bot Node.js
     chmod($fichierJson, 0666);
-     $_SESSION['dernier_envoi'] = time();
+
     echo json_encode(['success' => true]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Erreur d\'écriture sur le serveur.']);
