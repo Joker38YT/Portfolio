@@ -48,8 +48,15 @@ if (file_exists($fichierJson)) {
 $donneesExistantes[] = $nouveauMessage;
 
 // Enregistrement dans message.json
-if (file_put_contents($fichierJson, json_encode($donneesExistantes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE))) {
+$json = json_encode($donneesExistantes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+$resultat = @file_put_contents($fichierJson, $json);
+
+if ($resultat !== false) {
     echo json_encode(['success' => true]);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Erreur lors de l\'écriture du fichier sur le serveur.']);
+    $erreur = error_get_last();
+    echo json_encode([
+        'success' => false, 
+        'message' => 'Erreur PHP : ' . ($erreur['message'] ?? 'Inconnue')
+    ]);
 }
