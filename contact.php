@@ -76,9 +76,10 @@ $donneesExistantes[] = $nouveauMessage;
 $jsonEnregistre = json_encode($donneesExistantes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
 if (file_put_contents($fichierJson, $jsonEnregistre, LOCK_EX) !== false) {
-    // Mettre à jour l'horodatage de l'envoi en session
-    $_SESSION['dernier_envoi'] = time();
+    // SÉCURITÉ ACCÈS : Forcer les droits de lecture/écriture pour le bot Node.js
+    chmod($fichierJson, 0666);
+     $_SESSION['dernier_envoi'] = time();
     echo json_encode(['success' => true]);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Erreur lors de l\'enregistrement sur le serveur.']);
+    echo json_encode(['success' => false, 'message' => 'Erreur d\'écriture sur le serveur.']);
 }
