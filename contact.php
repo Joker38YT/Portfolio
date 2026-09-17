@@ -29,7 +29,7 @@ $nouveauMessage = [
 ];
 
 // Chemin absolu vers le fichier cible
-$fichierJson = '/srv/porfolio/data/message.json';
+$fichierJson = '/srv/portfolio/data/message.json';
 
 // Si le dossier n'existe pas, on tente de le créer
 $dossier = dirname($fichierJson);
