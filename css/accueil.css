@@ -1,0 +1,52 @@
+.contenu-ecran .nom{
+  margin-left: 200px;
+  letter-spacing: 3px;
+}
+
+.contenu-ecran h1{
+  margin-top: 150px;
+  font-size: 70px;
+  text-shadow: 3px 3px 15px black;
+}
+
+.contenu-ecran h2 {
+  font-size: 40px;
+  text-shadow: 2px 2px 7px black;
+}
+
+
+
+@media (max-width:1170px) {
+ .contenu-ecran h1 {
+    font-size: 45px;
+  }
+
+  .contenu-ecran h2 {
+    font-size: 20px;
+  }
+
+  .contenu-ecran .nom{
+    margin-left: 10% ;
+  }
+  
+}
+
+
+
+@media (max-width:425px) {
+  .contenu-ecran .nom{
+    word-break: break-word ;
+    
+  }   
+  .contenu-ecran h1{
+    font-size: 30px;
+  }
+}
+
+@media (max-width:325px) {
+  
+  .contenu-ecran .nom{
+    margin-left: 0;
+  }
+  
+}

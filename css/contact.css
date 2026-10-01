@@ -1,0 +1,123 @@
+.element, .element .contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 70px;
+    gap: 40px;
+}
+
+.element span{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(0,0,0, 0.5) ;
+
+}
+
+.element h1{
+    color: rgb(163, 0, 0);
+    text-shadow: 3px 0px 0 black;
+    letter-spacing: 3px;
+    font-size: 500%;
+}
+
+.contact a, .contact p {
+    font-size: 200%;
+    text-decoration: none;
+    color: white;
+    margin: 10px 0;
+    text-shadow: 3px 3px 15px black;
+}
+
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 200%;
+    height: 200%;
+}
+
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-bottom: 2px solid var(--clr-red);
+    color: var(--clr-font);
+    font-family: 'upheavtt', monospace;
+    font-size: 1rem;
+    padding: 10px 8px;
+    box-sizing: border-box;
+    outline: none;
+    letter-spacing: 2px;
+    height: 80px;
+
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #555;
+    font-size: 2rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-bottom-color: white;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 150px;
+
+}
+
+.contact-form button {
+    background: var(--clr-red);
+    color: var(--clr-font);
+    font-family: 'upheavtt', monospace;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    border: none;
+    padding: 10px 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #6a0000;
+    transition: transform 0.1s;
+    height: 80px;
+
+}
+
+.contact-form button:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+.form-confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--clr-red);
+    font-size: 1.4rem;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 15px black;
+}
+
+@media (max-width: 1210px) {
+    .contact-form { 
+        width: 90%;
+        gap: 10%; 
+    }
+
+    input,textarea,button {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .element h1, input::placeholder {
+    font-size: 2rem;
+    }
+}

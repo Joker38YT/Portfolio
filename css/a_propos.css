@@ -1,0 +1,15 @@
+.presentation{
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    margin: 100px 10%;
+    font-size: 25px;
+    text-shadow: 2px 2px 0 black;
+}
+
+.presentation a{
+    color: var(--clr-blue);
+    text-shadow: 3px 3px 0 rgb(255, 255, 255);
+    font-size: 150%;
+    text-decoration: none;
+}
