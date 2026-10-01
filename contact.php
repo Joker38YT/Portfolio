@@ -18,7 +18,7 @@ if (isset($_SESSION['dernier_envoi']) && (time() - $_SESSION['dernier_envoi']) <
     if  (mb_strlen($message) > 10000) {
         $erreur = "Votre message est trop long (10000 caractères max).";
     } else {
-        $jsonPath = "./data/data.json";
+        $jsonPath = "./data/message.json";
         
         
         $jsonData = file_exists($jsonPath) ? file_get_contents($jsonPath) : '[]';
